@@ -17,9 +17,34 @@
     flex: 0 0 15%;
   }
 
-  & div {
+  & .search-container {
     flex: 0 0 60%;
   }
+
+  & .spinner-container {
+    flex: 0 0 20%;
+    & mat-spinner {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+   & .profile-button {
+      flex: 0 0 20%;
+
+     border-radius: 0;
+     & img {
+       border-radius: 50%;
+       width:20%
+     }
+
+     & span {
+       width: 80%;
+       text-align: center;
+       white-space:nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
+     }
+   }
 }
 
 .search {
@@ -27,8 +52,7 @@
 }
 
 .search-button {
-  flex: 0 0 auto;
-  width: 20%;
+  width: 19%;
   background-color: #e8e8e8;
 }
 

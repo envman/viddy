@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '@etech/shared'
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component'
@@ -8,11 +8,16 @@ import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component'
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent {
+export class LayoutComponent implements OnInit {
   navOpen = 'true'
   uploadDialogRef: MatDialogRef<UploadDialogComponent>;
+  userProfile
 
   constructor(private authService: AuthenticationService, private dialog: MatDialog) {}
+
+  ngOnInit(){
+    this.getProfile()
+  }
 
   toggleSidenav() {
     this.navOpen = this.navOpen === 'true' ? 'false' : 'true'
@@ -24,5 +29,12 @@ export class LayoutComponent {
 
   uploadFileDialog() {
     this.uploadDialogRef = this.dialog.open(UploadDialogComponent)
+  }
+
+  getProfile() {
+    this.authService.getProfile((err, result) => {
+      console.log(result)
+      this.userProfile = result
+    })
   }
 }
