@@ -2,7 +2,9 @@
   <mat-icon (click)="toggleSidenav()">view_column</mat-icon>
   <span>eTech Tube</span>
   <div>
-    <input type="search" class="search" placeholder="Search..."/>
+    <mat-form-field class="search">
+      <input type="text" matInput  placeholder="Search..."/>
+    </mat-form-field>
     <button class="search-button" mat-raised-button><mat-icon>search</mat-icon></button>
   </div>
 </mat-toolbar>
@@ -14,7 +16,7 @@
       <!--eTech Tube-->
     <!--</mat-toolbar>-->
     <mat-nav-list>
-      <a mat-list-item>Videos</a>
+      <a mat-list-item><mat-icon>play_arrow</mat-icon>Videos</a>
       <a mat-list-item>History</a>
       <a mat-list-item (click)="logout()">Logout</a>
     </mat-nav-list>
