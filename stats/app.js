@@ -4,9 +4,13 @@ const bodyParser = require('body-parser')
 const app = express()
 const mongo = require('mongodb').MongoClient
 
-const mongoUrl = 'mongodb://stats_mongo:27017/stats'
+const mongoUrl = (() => {
+  return process.env.NODE_ENV === 'production'
+    ? process.env.MONGO_CONNECTION || 'mongodb://@mongo:27017/stats'
+    : 'mongodb://@localhost:27018/stats'
+})()
 
-mongo.connect(mongoUrl, (err, db) => {
+mongo.connect(mongoUrl, (err, database) => {
   if (err) {
     return console.log(`Error Connecting to ${mongoUrl}`)
   }
@@ -14,7 +18,37 @@ mongo.connect(mongoUrl, (err, db) => {
   app.use(cors())
   app.use(bodyParser.json())
 
-  let stats = db.collection('stats')
+  let db = database.db('stats')
+  let users = db.collection('users')
+
+  app.get('/users', (req, res) => {
+    users
+      .find({})
+      .toArray((err, data) => {
+        if (err) {
+          res.json(err)
+        }
+
+        res.json(data)
+      })
+  })
+
+  app.post('/users', (req, res) => {
+    let data = {
+      email: req.headers.email,
+      authId: req.headers.userauthid
+    }
+
+    users.insert(data, (err, data) => {
+      if (err) {
+        res.statusCode = 500
+        return res.json(err)
+      }
+
+      res.statusCode = 201
+      res.json(data)
+    })
+  })
 
   const port = process.env.PORT || 3000
   app.listen(port)
