@@ -39,15 +39,29 @@ mongo.connect(mongoUrl, (err, database) => {
       authId: req.headers.userauthid
     }
 
-    users.insert(data, (err, data) => {
-      if (err) {
-        res.statusCode = 500
-        return res.json(err)
-      }
+    users
+      .find({ "$or": [{ "email": data.email }, { "authId": data.authId }] }, { $exists: true })
+      .toArray((err, doc) => {
+        if (err) {
+          res.statusCode = 500
+          return res.json(err)
+        }
 
-      res.statusCode = 201
-      res.json(data)
-    })
+        if(doc) {
+          res.statusCode = 500
+          return res.json('Record already exists')
+        } else if(!doc) {
+          users.insert(data, (err, data) => {
+            if (err) {
+              res.statusCode = 500
+              return res.json(err)
+            }
+
+            res.statusCode = 201
+            res.json(data)
+          })
+        }
+      })
   })
 
   const port = process.env.PORT || 3000
