@@ -7,8 +7,7 @@ import {
   MatProgressSpinnerModule,
   MatButtonModule,
   MatInputModule,
-  MatMenuModule
-  MatInputModule,
+  MatMenuModule,
   MatDialogModule
 } from '@angular/material'
 
