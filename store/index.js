@@ -30,12 +30,12 @@ mongo.connect(mongoUrl, (err, db) => {
   
   app.post('/update', (req, res) => {
     videos.update({id: id}, entry, {upsert: true}, (err) => {
-    
-      let stream = fs.createWriteStream(path.join(videoPath, 'filename'))
-    
-      req.pipe(stream).on('finish', () => {
-        res.send('OK')
-      })
+      if (err) {
+        console.log(err)
+        return res.status(500).send(err)
+      }
+      
+      res.send('OK')
     })
   })
   
