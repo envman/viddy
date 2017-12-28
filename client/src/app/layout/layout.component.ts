@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '@etech/shared'
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { UploadDialogComponent } from '../upload-dialog/upload-dialog.component'
 
 @Component({
   selector: 'etech-layout',
@@ -8,14 +10,26 @@ import { AuthenticationService } from '@etech/shared'
 })
 export class LayoutComponent {
   navOpen = 'true'
-  constructor(private authService: AuthenticationService) {}
+  uploadDialogRef: MatDialogRef<UploadDialogComponent>;
+
+  constructor(private authService: AuthenticationService, private dialog: MatDialog) {}
 
   toggleSidenav() {
     this.navOpen = this.navOpen === 'true' ? 'false' : 'true'
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
   }
 
+  uploadFileDialog() {
+    this.uploadDialogRef = this.dialog.open(UploadDialogComponent)
+  }
+
 }
+
+@Component({
+  selector: 'dialog-upload',
+  templateUrl:
+
+})

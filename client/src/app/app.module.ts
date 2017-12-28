@@ -10,6 +10,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component'
 import { CallbackComponent } from './callback/callback.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LayoutComponent } from './layout/layout.component';
     CallbackComponent,
     LoginComponent,
     LayoutComponent,
-    VideoPlayerComponent
+    VideoPlayerComponent,
+    UploadDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { LayoutComponent } from './layout/layout.component';
     AuthenticationService,
     AuthenticatedGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [UploadDialogComponent]
 })
 export class AppModule { }

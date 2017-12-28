@@ -16,7 +16,7 @@ export const materialModules = [
   MatListModule,
   MatProgressSpinnerModule,
   MatButtonModule,
-  MatInputModule
+  MatDialogModule
 ]
 
 @NgModule({

@@ -22,6 +22,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-container>
-    <etech-video-player></etech-video-player>
+    <button mat-raised-button (click)="uploadFileDialog()">Upload</button>
+    <div>
+      <etech-video-player></etech-video-player>
+    </div>
   </mat-sidenav-container>
 </mat-sidenav-container>
