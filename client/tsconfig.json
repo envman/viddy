@@ -17,7 +17,8 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@etech/shared": ["./app/shared"]
+      "@etech/shared": ["./app/shared"],
+      "@etech/environments/*": ["./environments/*"]
     }
   }
 }

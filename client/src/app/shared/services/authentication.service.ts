@@ -3,15 +3,17 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import * as auth0 from 'auth0-js';
 
+import { environment } from '@etech/environments/environment'
+
 @Injectable()
 export class AuthenticationService {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'peJql8GAWQbo2NlZaxTzEp3XoYQKKag5',
-    domain: 'etech-dev.eu.auth0.com',
+    clientID: environment.clientId,
+    domain: environment.domain,
     responseType: 'token id_token',
     audience: 'https://etech-dev.eu.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: `${window.location.origin}/callback`,
     scope: 'openid'
   });
 
@@ -47,8 +49,8 @@ export class AuthenticationService {
     localStorage.removeItem('expires_at')
 
     this.auth0.logout({
-      returnTo: 'http://localhost:4200/login',
-      clientID: 'peJql8GAWQbo2NlZaxTzEp3XoYQKKag5'
+      returnTo: `${window.location.origin}/login`,
+      clientID: environment.clientId
     });
   }
 
