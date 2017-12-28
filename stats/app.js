@@ -3,7 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
 const mongo = require('mongodb').MongoClient
-const ObjectId = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectID
 const MongoQS = require('mongo-querystring')
 
 const mongoUrl = (() => {
@@ -51,7 +51,7 @@ mongo.connect(mongoUrl, (err, database) => {
     }
 
     users
-      .findOne({ '$or': [{ 'email': data.email }, { 'authId': data.authId }] }, { $exists: true }, (err, doc) => {
+      .findOne({'$or': [{'email': data.email}, {'authId': data.authId}]}, (err, doc) => {
         if (err) {
           res.statusCode = 500
           return res.json(err)
@@ -61,7 +61,7 @@ mongo.connect(mongoUrl, (err, database) => {
           res.statusCode = 500
           return res.json('Record already exists')
         } else if (!doc) {
-          users.insert(data, (err, data) => {
+          users.insertOne(data, (err, data) => {
             if (err) {
               res.statusCode = 500
               return res.json(err)
@@ -81,12 +81,12 @@ mongo.connect(mongoUrl, (err, database) => {
         {
           '$match': {
             '$and': [
-              { '_id': id },
-              { 'videos.id': req.params.videoId }
+              {'_id': id},
+              {'videos.id': req.params.videoId}
             ]
           }
         },
-        { '$unwind': '$videos' },
+        {'$unwind': '$videos'},
         {
           '$match': {
             'videos.id': req.params.videoId
@@ -107,8 +107,8 @@ mongo.connect(mongoUrl, (err, database) => {
 
         if (data.length > 0) {
           users.updateOne(
-            { '_id': id, 'videos.id': req.params.videoId },
-            { $set: { 'videos.$.count': ++data[0].count } },
+            {'_id': id, 'videos.id': req.params.videoId},
+            {$set: {'videos.$.count': ++data[0].count}},
             (err, result) => {
               if (err) {
                 res.statusCode = 500
@@ -119,7 +119,7 @@ mongo.connect(mongoUrl, (err, database) => {
               res.json(result)
             })
         } else {
-          users.updateOne({ '_id': id }, {
+          users.updateOne({'_id': id}, {
             $addToSet: {
               'videos': {
                 'id': req.params.videoId,
@@ -136,6 +136,40 @@ mongo.connect(mongoUrl, (err, database) => {
             res.json(result)
           })
         }
+      })
+  })
+
+  app.get('/videos/:videoId', (req, res) => {
+    users
+      .aggregate([
+        {
+          '$match': {
+            'videos.id': req.params.videoId
+          }
+        },
+        {'$unwind': '$videos'},
+        {
+          '$match': {
+            'videos.id': req.params.videoId
+          }
+        },
+        {
+          "$project": {
+            'id': '$videos.id',
+            'count': '$videos.count'
+          }
+        }
+      ])
+      .toArray((err, data) => {
+        if (err) {
+          res.statusCode = 500
+          return res.json(err)
+        }
+
+        res.statusCode = 200
+        res.json({
+          totalCount: data.reduce((a, b) => a + b.count, 0)
+        })
       })
   })
 
