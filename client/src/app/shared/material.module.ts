@@ -6,7 +6,8 @@ import {
   MatListModule,
   MatProgressSpinnerModule,
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatDialogModule
 } from '@angular/material'
 
 export const materialModules = [
@@ -16,6 +17,7 @@ export const materialModules = [
   MatListModule,
   MatProgressSpinnerModule,
   MatButtonModule,
+  MatInputModule,
   MatDialogModule
 ]
 

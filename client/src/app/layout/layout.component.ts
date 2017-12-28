@@ -25,11 +25,4 @@ export class LayoutComponent {
   uploadFileDialog() {
     this.uploadDialogRef = this.dialog.open(UploadDialogComponent)
   }
-
 }
-
-@Component({
-  selector: 'dialog-upload',
-  templateUrl:
-
-})
