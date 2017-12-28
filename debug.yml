@@ -13,6 +13,8 @@ services:
       - store
     volumes:
       - ./gateway:/usr/src/app
+    ports:
+      - "4200:80"
 
   client:
     build:
