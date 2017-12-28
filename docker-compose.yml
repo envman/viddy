@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  gateway:
+    build: gateway
+    restart: always
+    depends_on:
+      - client
+      - stats
+      - store
+    image: robgill/viddy:gateway
+
+  client:
+    build: gateway
+    restart: always
+    image: robgill/viddy:client
+
+  stats:
+    build: definition-import-service
+    restart: always
+    image: robgill/viddy:stats
+    
+  store:
+    build: rule-import-service
+    restart: always
+    image: robgill/viddy:store
+
+  video_mongo:
+    restart: always
+    image: library/mongo:3.4.6
+    volumes:
+      - /srv/docker/velox/mongo:/data/db

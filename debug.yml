@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  gateway:
+    build:
+      context: gateway
+      dockerfile: ./debug/Dockerfile
+    restart: always
+    depends_on:
+      - client
+      # - stats
+      - store
+    volumes:
+      - ./gateway:/usr/src/app
+
+  client:
+    build:
+      context: client
+      dockerfile: ./debug/Dockerfile
+    restart: always
+    volumes:
+      - ./client:/usr/src/app
+
+  # stats:
+  #   build:
+  #     context: stats
+  #     dockerfile: ./debug/Dockerfile
+  #   restart: always
+  #   volumes:
+  #     - ./stats:/usr/src/app
+    
+  store:
+    build:
+      context: store
+      dockerfile: ./debug/Dockerfile
+    restart: always
+    depends_on:
+      - video_mongo
+    volumes:
+      - ./store:/usr/src/app
+
+  video_mongo:
+    restart: always
+    image: library/mongo:3.4.6
