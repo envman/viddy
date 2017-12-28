@@ -1,21 +1,25 @@
 <mat-toolbar class="etech-title-container">
   <mat-icon (click)="toggleSidenav()">view_column</mat-icon>
   eTech Tube
+<div layout="row" flex>
+    <input type="search" class="search" placeholder="Search..."/>
+    <button class="search-button" mat-raised-button><mat-icon>search</mat-icon></button>
+  </div>
 </mat-toolbar>
 <mat-sidenav-container class="etech-sidebar-container">
   <mat-sidenav mode="side" [(opened)]="navOpen">
     <!--need to show this when we copy youtubes style on videos-->
     <!--<mat-toolbar >-->
-    <!--<mat-icon (click)="toggleSidenav()">view_column</mat-icon>-->
-    <!--eTech Tube-->
+      <!--<mat-icon (click)="toggleSidenav()">view_column</mat-icon>-->
+      <!--eTech Tube-->
     <!--</mat-toolbar>-->
     <mat-nav-list>
-      <a mat-list-item>videos</a>
+      <a mat-list-item>Videos</a>
       <a mat-list-item>History</a>
       <a mat-list-item (click)="logout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-container>
-    <router-outlet></router-outlet>
+    <etech-video-player></etech-video-player>
   </mat-sidenav-container>
 </mat-sidenav-container>
