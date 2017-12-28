@@ -9,7 +9,7 @@ services:
     restart: always
     depends_on:
       - client
-      # - stats
+      - stats
       - store
     volumes:
       - ./gateway:/usr/src/app
@@ -22,13 +22,13 @@ services:
     volumes:
       - ./client:/usr/src/app
 
-  # stats:
-  #   build:
-  #     context: stats
-  #     dockerfile: ./debug/Dockerfile
-  #   restart: always
-  #   volumes:
-  #     - ./stats:/usr/src/app
+  stats:
+    build:
+      context: stats
+      dockerfile: ./debug/Dockerfile
+    restart: always
+    volumes:
+      - ./stats:/usr/src/app
     
   store:
     build:
