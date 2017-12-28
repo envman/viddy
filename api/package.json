@@ -1,0 +1,25 @@
+{
+  "name": "viddty.api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/envman/viddy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/envman/viddy/issues"
+  },
+  "homepage": "https://github.com/envman/viddy#readme",
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
