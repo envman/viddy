@@ -1,0 +1,35 @@
+import { NgModule } from '@angular/core';
+<<<<<<< e30e090b29a5aa7aee0c8e4640b266c84763fa20
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+  MatInputModule
+} from '@angular/material'
+=======
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatProgressSpinnerModule, MatButtonModule, MatDialogModule} from '@angular/material'
+>>>>>>> add upload dialog
+
+export const materialModules = [
+  MatIconModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatButtonModule,
+<<<<<<< e30e090b29a5aa7aee0c8e4640b266c84763fa20
+  MatInputModule
+=======
+  MatDialogModule
+>>>>>>> add upload dialog
+]
+
+@NgModule({
+  imports: materialModules,
+  exports: materialModules,
+  declarations: []
+})
+export class MaterialModule { }
