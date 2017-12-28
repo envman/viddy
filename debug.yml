@@ -23,6 +23,7 @@ services:
     restart: always
     volumes:
       - ./client:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
 
   stats:
     build:
@@ -49,3 +50,5 @@ services:
   stats_mongo:
     restart: always
     image: library/mongo:3.4.6
+volumes:
+   node_modules:
