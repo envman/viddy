@@ -6,6 +6,8 @@ import { MaterialModule, AuthenticationService, AuthenticatedGuard } from '@etec
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './shared/material/material.module';
+import { VideoPlayerComponent } from './video-player/video-player.component'
 import { CallbackComponent } from './callback/callback.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -16,6 +18,8 @@ import { LayoutComponent } from './layout/layout.component';
     CallbackComponent,
     LoginComponent,
     LayoutComponent
+    AppComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
