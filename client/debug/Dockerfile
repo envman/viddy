@@ -2,17 +2,17 @@ FROM node:latest
 
 ENV APPDIR /usr/src/app
 
-RUN npm install --unsafe-perm -g @angular/cli
-
-WORKDIR /usr/src
-ADD package.json .
-ADD package-lock.json .
-RUN npm install
-
 RUN mkdir -p ${APPDIR}
 WORKDIR ${APPDIR}
 
+RUN npm install -g --unsafe-perm @angular/cli
+ADD package.json ./
+ADD package-lock.json .
+RUN npm install
+
 ADD . ${APPDIR}
+
+WORKDIR ${APPDIR}
 
 ENV PORT 80
 EXPOSE 80

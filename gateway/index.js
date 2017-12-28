@@ -66,7 +66,7 @@ app.use((req, res, done) => {
     }
 })
 
-const port = process.env.PORT || 4200
+const port = process.env.PORT || 80
 app.listen(port, function () {
     console.log(`listening @ ${port}`)
 })
