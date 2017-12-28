@@ -43,3 +43,7 @@ services:
   video_mongo:
     restart: always
     image: library/mongo:3.4.6
+
+  stats_mongo:
+    restart: always
+    image: library/mongo:3.4.6

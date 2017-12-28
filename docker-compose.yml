@@ -30,4 +30,10 @@ services:
     restart: always
     image: library/mongo:3.4.6
     volumes:
-      - /srv/docker/velox/mongo:/data/db
+      - /srv/docker/viddy/mongo:/data/db
+
+  stats_mongo:
+    restart: always
+    image: library/mongo:3.4.6
+    volumes:
+      - /srv/docker/viddy/mongo:/data/db
