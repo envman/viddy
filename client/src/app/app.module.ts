@@ -11,6 +11,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
+import { NumberTruncatePipe } from './shared/pipes/number-truncate.pipe'
 
 @NgModule({
   declarations: [

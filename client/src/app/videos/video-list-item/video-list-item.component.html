@@ -11,7 +11,7 @@
     <a>{{video.uploader}}</a>
   </span>
   <div class="info-container">
-    <span>{{video.views}} views</span>
+    <span>{{video.views | numTrunc}} views</span>
     <span>{{video.date | date:'shortDate'}}</span>
   </div>
 </div>
