@@ -1,0 +1,13 @@
+.list-container {
+  display: block;
+  width:100%;
+  height: calc(100vh - 60px);
+  padding: 10px;
+  box-sizing: border-box;
+  max-height: calc(100vh - 60px);
+  overflow-x: auto;
+}
+
+.grid-list {
+  height:100%;
+}

@@ -30,15 +30,17 @@
       <!--eTech Tube-->
     <!--</mat-toolbar>-->
     <mat-nav-list>
-      <a mat-list-item><mat-icon>play_arrow</mat-icon>Videos</a>
+      <a mat-list-item [routerLink]="['videos']"><mat-icon>play_arrow</mat-icon>Videos</a>
       <a mat-list-item>History</a>
       <a mat-list-item>Logout</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-container>
-    <button mat-raised-button (click)="uploadFileDialog()">Upload</button>
-    <div>
-      <etech-video-player></etech-video-player>
-    </div>
-  </mat-sidenav-container>
+  <mat-sidenav-content>
+    <!--<button mat-raised-button (click)="uploadFileDialog()">Upload</button>-->
+    <!--<div>-->
+      <!--<etech-video-player></etech-video-player>-->
+    <!--</div>-->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
 </mat-sidenav-container>

@@ -17,7 +17,6 @@ import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
     AppComponent,
     CallbackComponent,
     LoginComponent,
-    LayoutComponent,
     VideoPlayerComponent,
     UploadDialogComponent
   ],

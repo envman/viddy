@@ -1,0 +1,17 @@
+<div class="video-container">
+  <img *ngIf="video.image">
+  <div  *ngIf="!video.image" class="no-image">
+    <mat-icon>
+      mood_bad
+    </mat-icon>
+    <span>No Image</span>
+  </div>
+  <span class="video-title">{{video.name}}</span>
+  <span class="video-uploader">
+    <a>{{video.uploader}}</a>
+  </span>
+  <div class="info-container">
+    <span>{{video.views}} views</span>
+    <span>{{video.date | date:'shortDate'}}</span>
+  </div>
+</div>

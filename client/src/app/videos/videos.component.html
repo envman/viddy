@@ -1,0 +1,12 @@
+<div class="list-container">
+  <mat-grid-list class="grid-list" cols="5" rowHeight="200px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let video of videos">
+      <!--<mat-card>-->
+        <!--<mat-card-content>{{video.name}}</mat-card-content>-->
+      <!--</mat-card>-->
+      <etech-video-list-item [video]="video"></etech-video-list-item>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>
+

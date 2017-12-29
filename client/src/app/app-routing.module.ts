@@ -5,15 +5,15 @@ import { AuthenticatedGuard } from '@etech/shared'
 
 import { CallbackComponent } from './callback/callback.component'
 import { LoginComponent } from './login/login.component'
-import { LayoutComponent } from './layout/layout.component'
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    loadChildren: './layout/layout.module#LayoutModule',
     canActivate: [AuthenticatedGuard],
     canActivateChild: [AuthenticatedGuard]
   },
+
   { path: 'callback', component: CallbackComponent},
   { path: 'login', component: LoginComponent }
 ];
